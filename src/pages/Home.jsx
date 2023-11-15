@@ -2,7 +2,10 @@ import { fetchPictures } from "API"
 import { useEffect } from "react";
 
 export const Home = () => {
-    
+
+
+
+
     useEffect(() => {
         
         const getPictures = async () => {
@@ -10,6 +13,8 @@ export const Home = () => {
             try {
 
                 const result = await fetchPictures();
+                 console.log(result);
+
 
 
             } catch (error) {
@@ -20,14 +25,12 @@ export const Home = () => {
         }
         
         getPictures()
+
+        return
     
     }, [])
 
 
-
-
-    
-    
     return <div> <h1>Trending today</h1>
     <ul></ul></div>
 }
