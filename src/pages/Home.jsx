@@ -1,19 +1,22 @@
-import { fetchPictures } from "API"
-import { useEffect } from "react";
+import { getTrendingMovies } from "API"
+import  MoviesList from "components/MoviesList/MoviesList";
+import { useEffect, useState } from "react";
 
-export const Home = () => {
+const Home = () => {
 
-
+    const [trendingMovies, setTrendingMovies] = useState([]);
+    const [loading, setLoading] = useState(false);
 
 
     useEffect(() => {
         
-        const getPictures = async () => {
+        const getMovies = async () => {
     
             try {
-
-                const result = await fetchPictures();
-                 console.log(result);
+                setLoading(true);
+                const result = await getTrendingMovies();
+                setLoading(false);
+                setTrendingMovies(result.data.results);
 
 
 
@@ -21,16 +24,19 @@ export const Home = () => {
 
                 console.log(error);
 
+            } finally {
+                setLoading(false);
             }
         }
         
-        getPictures()
+        getMovies();
 
-        return
     
     }, [])
 
 
-    return <div> <h1>Trending today</h1>
-    <ul></ul></div>
+    return <main className="container"> <h1>Trending today</h1>
+        <MoviesList movies={trendingMovies} loading={loading} /></main>
 }
+
+export default Home;
