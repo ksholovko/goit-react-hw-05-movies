@@ -1,0 +1,22 @@
+.ReviewsList {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    width: calc(100vw/1.2);
+}
+
+.authorName {
+    margin-bottom: 10px;
+}
+
+.text {
+    text-align: justify;
+    font-style: italic;
+}
+
+.noInfo {
+    text-align: center;
+    font-weight: bold;
+}

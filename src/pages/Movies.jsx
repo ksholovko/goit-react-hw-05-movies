@@ -45,10 +45,10 @@ const Movies = () => {
    }
 
    
-   return <div>
+   return <main className="container">
       <SearchInput onSubmit={handleSearchUpdate} />
       {movies && <MoviesList movies={movies}/>}
-   </div>
+   </main>
 }
 
 export default Movies;

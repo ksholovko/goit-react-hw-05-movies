@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, NavLink, Outlet, useLocation, useParams } from "react-router-dom";
 import { getMovieInfo } from "API";
-import  MovieInfo  from "components/MovieInfo";
+import MovieInfo from "components/MoviesInfo/MovieInfo";
+import css from "./MovieDetails.module.css"
 
 const MovieDetails = () => {
     
@@ -31,21 +32,14 @@ const MovieDetails = () => {
    }, []);
 
 
-  return <div>
+  return <main className="container">
       
-    <Link to={backLinkLocationRef.current}>Go back</Link>
-    <h1>Details about movie</h1>
+    <Link to={backLinkLocationRef.current}>
+      <button className={css.button}>Go back</button></Link>
     <MovieInfo info={movieInfo} />
-    <ul>
-        <li>
-          <NavLink to="cast">Cast</NavLink>
-        </li>
-        <li>
-          <NavLink to="reviews">Reviews</NavLink>
-        </li>
-        </ul>
-        <Outlet/>
-    </div>
+    
+     <Outlet/>
+    </main>
 }
 
 export default MovieDetails;

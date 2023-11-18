@@ -1,9 +1,13 @@
-import {  Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
+
+
 import SharedLayout from "./SharedLayout/SharedLyout";
 import  Movies from "pages/Movies";
-import  MovieDetails  from "pages/MovieDetails";
-import  Cast  from "./Cast";
-import  Reviews  from "./Reviews";
+import  MovieDetails  from "pages/MovieDetails/MovieDetails";
+import  Cast  from "./Cast/Cast";
+import  Reviews  from "./Reviews/Reviews";
 import  Home  from "pages/Home";
 
 
@@ -24,7 +28,7 @@ export const App = () => {
           <Route path="*" element={<Navigate to="/" />}/>
         </Route>
       </Routes>
-
+      <ToastContainer />
   
     </div>
   );
