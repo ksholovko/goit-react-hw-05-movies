@@ -29,7 +29,7 @@ const MovieDetails = () => {
 
      fetchMovieInfo();
   
-   }, []);
+   }, [movieId]);
 
 
   return <main className="container">
