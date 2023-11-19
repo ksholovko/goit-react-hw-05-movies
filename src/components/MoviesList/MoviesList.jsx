@@ -2,12 +2,12 @@ import { Link, useLocation } from "react-router-dom";
 import css from './MoviesList.module.css';
 import noimage from 'images/noimage.png';
 
-const MoviesList = ({ movies, loading }) => {
+const MoviesList = ({ movies }) => {
 const location = useLocation();
 
    return (
     <div>
-      {!loading ? (
+    
         <ul className={css.ImageGallery}>
           {movies.map((movie) => (
             <li className={css.ImageGalleryItem} key={movie.id}>
@@ -26,9 +26,6 @@ const location = useLocation();
           ))}
          </ul>
          
-      ) : (
-        <p className={css.indicator}> Loading...</p>
-      )}
     </div>
   );
 } 

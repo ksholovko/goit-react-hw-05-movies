@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { lazy, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+
 import { getMoviesBySearch } from "API";
 import  SearchInput from "components/SearchInput/SearchInput";
-import  MoviesList from "components/MoviesList/MoviesList";
+
+const MoviesList = lazy(() => import("components/MoviesList/MoviesList"));
 
 const Movies = () => {
 

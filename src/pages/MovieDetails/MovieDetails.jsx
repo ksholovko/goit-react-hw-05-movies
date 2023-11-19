@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-import { Link, NavLink, Outlet, useLocation, useParams } from "react-router-dom";
+import { Suspense, useEffect, useRef, useState } from "react";
+import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 import { getMovieInfo } from "API";
 import MovieInfo from "components/MoviesInfo/MovieInfo";
 import css from "./MovieDetails.module.css"
@@ -37,8 +37,9 @@ const MovieDetails = () => {
     <Link to={backLinkLocationRef.current}>
       <button className={css.button}>Go back</button></Link>
     <MovieInfo info={movieInfo} />
-    
-     <Outlet/>
+      <Suspense fallback={<div>Loading...</div>}>
+      <Outlet />
+    </Suspense>
     </main>
 }
 
