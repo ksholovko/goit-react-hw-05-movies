@@ -1,11 +1,11 @@
-import { NavLink, Outlet, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import noimage from 'images/noimage.png';
 import css from "./MoviesInfo.module.css"
 
 
 export default function MovieInfo({ info }) {
 
-    const location = useLocation();
+    // const location = useLocation();
     const { original_title, overview, poster_path, vote_average, genres, release_date } = info;
 
     const filmgenres = [];
