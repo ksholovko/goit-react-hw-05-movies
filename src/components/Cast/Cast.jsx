@@ -9,28 +9,37 @@ const Cast = () => {
 
    const {movieId} = useParams();
 
-   const [actors, setActors] = useState([]);
+    const [actors, setActors] = useState([]);
+    const [loading, setLoading] = useState(false);
 
-   useEffect(() => {
+    useEffect(() => {
         
-      const getMovieActors = async () => {
+        const getMovieActors = async () => {
     
             try {
                
-               const result = await getMovieCast(movieId);
-               setActors(result.data.cast);
+                setLoading(true);
+                const result = await getMovieCast(movieId);
+                setActors(result.data.cast);
+                setLoading(false);
 
             } catch (error) {
 
                 console.log(error);
+                setLoading(false);
 
-            } 
+            }
         }
         
         getMovieActors();
 
     
-    }, [movieId])
+    }, [movieId]);
+
+
+    if (loading) {
+        return <div className={css.indicator}>Loading...</div>
+    }
 
    return (<div>
       {actors.length !== 0 ? (

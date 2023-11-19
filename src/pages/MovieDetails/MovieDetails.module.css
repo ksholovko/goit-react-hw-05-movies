@@ -22,3 +22,8 @@
     outline: 1px solid grey;
     color: black;
 }
+
+.indicator {
+    text-align: center;
+    font-weight: bold;
+}

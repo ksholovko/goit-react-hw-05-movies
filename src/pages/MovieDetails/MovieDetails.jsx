@@ -37,7 +37,7 @@ const MovieDetails = () => {
     <Link to={backLinkLocationRef.current}>
       <button className={css.button}>Go back</button></Link>
     <MovieInfo info={movieInfo} />
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<div className={css.indicator}>Loading...</div>}>
       <Outlet />
     </Suspense>
     </main>

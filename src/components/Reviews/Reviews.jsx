@@ -10,7 +10,8 @@ const Reviews = () => {
 
  const {movieId} = useParams();
 
-   const [reviews, setReviews] = useState([]);
+    const [reviews, setReviews] = useState([]);
+    const [loading, setLoading] = useState(false);
 
    useEffect(() => {
         
@@ -18,24 +19,32 @@ const Reviews = () => {
     
          try {
                
+            setLoading(true);
             const result = await getMovieReviews(movieId);
-            console.log(result);
-            setReviews(result.data.results);
+             setReviews(result.data.results);
+             setLoading(false);
 
          } catch (error) {
 
-            console.log(error);
+             console.log(error);
+             setLoading(false);
 
          }
       }
         
-      getMovieRev();
+       getMovieRev();
 
     
    }, [movieId]);
 
 
-   return ( <div>
+    if (loading) {
+        return <div className={css.indicator}>Loading...</div>
+    }
+
+
+    
+    return (<div>
     {reviews.length !== 0 ? (
         <ul className={css.ReviewsList}>
             {reviews.map(({ id, author, content }) => {
@@ -51,6 +60,8 @@ const Reviews = () => {
         <p className={css.noInfo}>Sorry, no reviews</p>
     )}
    </div> )
+    
+   
 }
 
 export default Reviews;
